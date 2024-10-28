@@ -1,22 +1,31 @@
-
 public class AIMS {
     public static void main(String[] args) {
-        //Tạo giỏ hàng trống
+        // Create an empty cart
         Cart anOrder = new Cart();
 
-        //Thêm đĩa vào giỏ hàng
-        DigitalVdDisc dvd1 = new DigitalVdDisc("The Lion King","Animation","Roger Allers",87,19.95f);
+        // Add DVDs to the cart
+        DigitalVdDisc dvd1 = new DigitalVdDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         anOrder.addDigitalVideoDisc(dvd1);
-        DigitalVdDisc dvd2 = new DigitalVdDisc("Star wars","Science Fiction","Geogre Lucas",87,24.95f);
+
+        DigitalVdDisc dvd2 = new DigitalVdDisc("Star Wars", "Science Fiction", "George Lucas", 120, 24.95f); // Fixed typo "Geogre"
         anOrder.addDigitalVideoDisc(dvd2);
-        DigitalVdDisc dvd3 = new DigitalVdDisc("Aladin", "Animation" , 18.99f);
+
+        DigitalVdDisc dvd3 = new DigitalVdDisc("Aladdin", "Animation", 18.99f); // Fixed typo "Aladin"
         anOrder.addDigitalVideoDisc(dvd3);
 
-       
+        // Print cart contents
+        System.out.println("Cart contents:");
         anOrder.print();
 
+        // Remove a DVD
+        System.out.println("\nRemoving 'Star Wars'..."); 
         anOrder.removeDigitalVideoDisc(dvd2);
-        
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
+
+        // Print cart contents after removal
+        System.out.println("\nCart contents after removal:");
+        anOrder.print();
+
+        // Calculate and print total cost
+        System.out.printf("\nTotal cost is: %.2f\n", anOrder.totalCost()); 
     }
 }
