@@ -10,7 +10,7 @@ public class AIMS {
         DigitalVdDisc dvd2 = new DigitalVdDisc("Star Wars", "Science Fiction", "George Lucas", 120, 24.95f); // Fixed typo "Geogre"
         anOrder.addDigitalVideoDisc(dvd2);
 
-        DigitalVdDisc dvd3 = new DigitalVdDisc("Aladdin", "Animation", 18.99f); // Fixed typo "Aladin"
+        DigitalVdDisc dvd3 = new DigitalVdDisc("Aladdin", "Animation", 18.99f); 
         anOrder.addDigitalVideoDisc(dvd3);
 
         // Print cart contents
@@ -18,8 +18,8 @@ public class AIMS {
         anOrder.print();
 
         // Remove a DVD
-        System.out.println("\nRemoving 'Star Wars'..."); 
-        anOrder.removeDigitalVideoDisc(dvd2);
+        System.out.println("\nRemoving 'Aladdin'..."); 
+        anOrder.removeDigitalVideoDisc(dvd3);
 
         // Print cart contents after removal
         System.out.println("\nCart contents after removal:");

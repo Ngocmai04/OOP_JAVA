@@ -10,8 +10,7 @@ public class DigitalVdDisc {
         this.title = title;
         this.category = category;
         this.director = director;
-       
-        this.cost = cost;
+       	this.cost = cost;
         this.id = ++cnt_Disc; 
     }
 	public DigitalVdDisc(String title, String category, float cost) {
