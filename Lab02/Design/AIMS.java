@@ -16,14 +16,14 @@ public class AIMS {
         // Print cart contents
         System.out.println("Cart contents:");
         anOrder.print();
-
+       
         // Remove a DVD
         System.out.println("\nRemoving 'Aladdin'..."); 
         anOrder.removeDigitalVideoDisc(dvd3);
 
         // Print cart contents after removal
         System.out.println("\nCart contents after removal:");
-        anOrder.print();
+       
 
         // Calculate and print total cost
         System.out.printf("\nTotal cost is: %.2f\n", anOrder.totalCost()); 
