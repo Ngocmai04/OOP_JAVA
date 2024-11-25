@@ -1,5 +1,5 @@
-package Lab03;
-
+package Lab03.AimProject.src.aims.store;
+import Lab03.AimProject.src.aims.disc.*;
 import java.util.LinkedList;
 
 public class STORE {

@@ -1,4 +1,3 @@
-package Lab03;
 public class AIMS {
     public static void main(String[] args) {
         // Create an empty cart
