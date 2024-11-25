@@ -1,4 +1,3 @@
-package Lab03;
 public class DigitalVdDisc {
 	private static int cnt_Disc=0;
 	private String title;
@@ -7,8 +6,6 @@ public class DigitalVdDisc {
 	private int length;
 	private float cost;
 	private int id;
-	// private static int nbDigitalVdDisc=0;
-
 	 public DigitalVdDisc(String title, String category, String director, float cost) {
         this.title = title;
         this.category = category;
@@ -21,10 +18,6 @@ public class DigitalVdDisc {
         this.category = category;  
         this.cost = cost;
         this.id = ++cnt_Disc; 
-    }
-	public DigitalVdDisc(String title) {
-        this.title = title;
-        
     }
     public DigitalVdDisc(String title, String category, String director, int length, float cost) {
         this.title = title;
