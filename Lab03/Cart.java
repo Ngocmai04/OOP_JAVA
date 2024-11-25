@@ -1,4 +1,4 @@
-
+package Lab03;
 public class Cart {
 
     private static final int MAX_NUMBER_ORDER = 20;
