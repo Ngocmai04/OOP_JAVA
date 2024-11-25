@@ -4,7 +4,7 @@ import Lab03.AimProject.src.aims.disc.DigitalVdDisc;
 
 public class TestPassingParameter {
     public static void main(String[] args) {
-        DigitalVdDisc jungleDVD=new DigitalVdDisc("Jungle");
+      DigitalVdDisc jungleDVD=new DigitalVdDisc("Jungle");
         DigitalVdDisc cinderellaDVD=new DigitalVdDisc("Cinderella");
         
         swap(jungleDVD, cinderellaDVD); // chua doi
