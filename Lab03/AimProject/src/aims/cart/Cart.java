@@ -11,6 +11,7 @@ public class Cart {
 
     private int qtyOrdered;
 
+ 
     public int addDigitalVideoDisc(DigitalVdDisc disc) {
         int addCnt = 0;
 
@@ -23,6 +24,39 @@ public class Cart {
             addCnt++;
         }
         return addCnt;
+    }
+
+    public int addDigitalVideoDisc(DigitalVdDisc... dvdArray) {
+        int addCount = 0;
+        for (DigitalVdDisc disc : dvdArray) {
+            if (qtyOrdered == MAX_NUMBER_ORDER) {
+                System.out.println("The cart is almost full. Can't add ");
+                break;
+            } else {
+                itemOrdered[qtyOrdered] = disc;
+                qtyOrdered++;
+                System.out.println("The DVD " + '\"' + disc.get_Title() + '\"' + " has been added!");
+                addCount++;
+            }
+        }
+        return addCount;
+    }
+    //Ham them 2 dia DVD
+    public int addDigitalVideoDisc(DigitalVdDisc dvd1, DigitalVdDisc dvd2) {
+        if (qtyOrdered + 1 >= MAX_NUMBER_ORDER) {
+            System.out.println("The cart is almost full. Can't add more discs");
+            return 0;
+        } else {
+            itemOrdered[qtyOrdered] = dvd1;
+            qtyOrdered++;
+            System.out.println("The DVD " + '\"' + dvd1.get_Title() + '\"' + " has been added!");
+
+            itemOrdered[qtyOrdered] = dvd2;
+            qtyOrdered++;
+            System.out.println("The DVD " + '\"' + dvd2.get_Title() + '\"' + " has been added!");
+
+            return 2; //Tra ve so dia DVD da them duoc
+        }
     }
 
     public void removeDigitalVideoDisc(DigitalVdDisc disc) {
