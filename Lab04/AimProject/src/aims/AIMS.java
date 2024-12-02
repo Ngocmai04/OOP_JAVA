@@ -1,3 +1,7 @@
+package Lab04.AimProject.src.aims;
+import Lab04.AimProject.src.aims.disc.*;
+import Lab04.AimProject.src.aims.media.DigitalVdDisc;
+import Lab04.AimProject.src.aims.cart.*;
 public class AIMS {
     public static void main(String[] args) {
         // Create an empty cart

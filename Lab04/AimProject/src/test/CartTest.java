@@ -2,7 +2,7 @@ package Lab04.AimProject.src.test;
 
 
 import Lab04.AimProject.src.aims.cart.Cart;
-import Lab04.AimProject.src.aims.disc.DigitalVdDisc;
+import Lab04.AimProject.src.aims.media.DigitalVdDisc;
 
 
 public class CartTest {
