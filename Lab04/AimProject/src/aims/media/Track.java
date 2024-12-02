@@ -18,7 +18,6 @@ public class Track implements Playable {
     public int getLength() {
         return length;
     }
-
     // Override equals() để so sánh Track theo title và length
     @Override
     public boolean equals(Object obj) {
