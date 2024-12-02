@@ -5,6 +5,7 @@ public class Track implements Playable {
     private int length;
 
     public Track(String title, int length) {
+        super();
         this.title = title;
         this.length = length;
     }
