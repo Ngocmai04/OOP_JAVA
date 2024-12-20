@@ -1,5 +1,7 @@
 package src.aims.store;
+
 import src.aims.media.Media;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class STORE {
@@ -7,12 +9,7 @@ public class STORE {
 
     // Kiểm tra phương tiện có trong cửa hàng hay không
     public boolean checkMedia(Media media) {
-        for (Media item : itemsInStore) {
-            if (item.equals(media)) {
-                return true;  // Trả về true nếu tìm thấy phương tiện trong cửa hàng
-            }
-        }
-        return false;  // Trả về false nếu không tìm thấy
+        return itemsInStore.contains(media);  // Dùng contains() thay vì vòng lặp thủ công
     }
 
     // Xóa phương tiện khỏi cửa hàng
@@ -34,6 +31,8 @@ public class STORE {
             System.out.println("Media already exists in the store.");
         }
     }
+
+    // Tìm kiếm phương tiện theo tiêu đề
     public Media searchByTitle(String title) {
         for (Media media : itemsInStore) {
             if (media.get_Title().equalsIgnoreCase(title)) {
@@ -47,8 +46,21 @@ public class STORE {
     public void print() {
         StringBuilder output = new StringBuilder();
         for (Media media : itemsInStore) {
-            output.append(media.get_Title()).append(" - ").append(media.get_Category()).append(" - ").append(media.get_Cost()).append(" $\n");
+            output.append(media.get_Title())
+                  .append(" - ")
+                  .append(media.get_Category())
+                  .append(" - ")
+                  .append(media.get_Cost())
+                  .append(" $\n");
         }
         System.out.println(output.toString());
+    }
+
+    // Phương thức trả về danh sách các phương tiện đã được sắp xếp theo một tiêu chí nào đó (ví dụ: tên, giá cả,...)
+    public ArrayList<Media> getItemsOrdered() {
+        // Thực hiện sắp xếp, giả sử chúng ta sắp xếp theo tên
+        ArrayList<Media> orderedList = new ArrayList<>(itemsInStore);
+        orderedList.sort((media1, media2) -> media1.get_Title().compareToIgnoreCase(media2.get_Title()));
+        return orderedList;
     }
 }

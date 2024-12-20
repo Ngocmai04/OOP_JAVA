@@ -4,57 +4,52 @@ public class DigitalVdDisc extends Media implements Playable {
     private String director;
     private int length;
 
-    // Constructor 1
-    public DigitalVdDisc(String title, String category, String director, float cost) {
-        super(title, category, cost);
-        this.director = director;
-    }
-
-    // Constructor 2
-    public DigitalVdDisc(String title, String category, float cost) {
-        super(title, category, cost);
-    }
-
-    // Constructor 3
+    // Constructor
     public DigitalVdDisc(String title, String category, String director, int length, float cost) {
         super(title, category, cost);
         this.director = director;
         this.length = length;
     }
 
-    // Getter và Setter giữ đúng tên
-    public String get_Director() {
+    public DigitalVdDisc(int i, String string, String string2, float f, int j, String string3) {
+        super(string2, string3, j);
+
+    }
+
+    // Getter and Setter methods following Java conventions
+    public String getDirector() {
         return director;
     }
 
-    public void set_Director(String director) {
+    public void setDirector(String director) {
         this.director = director;
     }
 
-    public int get_Length() {
+    public int getLength() {
         return length;
     }
 
-    public void set_Length(int length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
-    // Triển khai phương thức play() từ Playable
+    // Implement play() from Playable interface
     @Override
     public void play() {
-        if (get_Length() > 0) {
+        if (getLength() > 0 && director != null && !director.isEmpty()) {
             System.out.println("Playing DVD: " + get_Title());
-            System.out.println("DVD length: " + get_Length());
+            System.out.println("Director: " + director);
+            System.out.println("DVD length: " + getLength() + " minutes");
         } else {
-            System.out.println("Cannot play this DVD. Invalid length.");
+            System.out.println("Cannot play this DVD. Invalid length or missing director.");
         }
     }
 
-    // Override toString() để hiển thị thông tin chi tiết
+    // Override toString() to display DVD details
     @Override
     public String toString() {
         return super.toString() +
-                ", director='" + director + '\'' +
-                ", length=" + length;
+                ", Director='" + director + '\'' +
+                ", Length=" + length + " minutes";
     }
 }

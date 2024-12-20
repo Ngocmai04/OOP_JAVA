@@ -1,11 +1,11 @@
 package src.aims;
+import java.util.Scanner;
+
+import src.aims.cart.Cart;
+import src.aims.media.CompactDisc;
+import src.aims.media.DigitalVdDisc;
 import src.aims.media.Media;
 import src.aims.store.STORE;
-import src.aims.cart.Cart;
-import src.aims.exception.PlayerException;
-import src.aims.media.DigitalVdDisc;
-import src.aims.media.CompactDisc;
-import java.util.Scanner;
 
 public class AIMS {
     private static Scanner scanner = new Scanner(System.in);
@@ -109,12 +109,12 @@ public class AIMS {
     }
 
     // Phát phương tiện
-    public static void playMedia(){
+    public static void playMedia() {
         System.out.print("Enter media title to play: ");
         String title = scanner.nextLine();
-        Media media = cart.searchByTitle(title);  // Tìm kiếm phương tiện
+        DigitalVdDisc media = (DigitalVdDisc) cart.searchByTitle(title);  // Tìm kiếm phương tiện
         if (media != null) {
-            media.play();
+            media.play();  // Phát phương tiện;
         } else {
             System.out.println("Media not found.");
         }
@@ -152,7 +152,7 @@ public class AIMS {
     public static void addMediaToStore() {
         System.out.print("Enter media title to add to store: ");
         String title = scanner.nextLine();
-        Media media = new DigitalVdDisc(title, "Sci-fi", "Director", 19.99f);
+        Media media = new DigitalVdDisc(title, "Sci-fi", "Director", 15, 19.99f);
         store.addMedia(media);
     }
 
@@ -160,7 +160,7 @@ public class AIMS {
     public static void removeMediaFromStore() {
         System.out.print("Enter media title to remove from store: ");
         String title = scanner.nextLine();
-        Media media = new DigitalVdDisc(title, "Sci-fi", "Director", 19.99f);
+        Media media = store.searchByTitle(title);
         store.removeMedia(media);
     }
 

@@ -10,7 +10,7 @@ public abstract class Media {
     private float cost;
 
     // Constructor
-    public Media( String title2, String title, float cost) {
+    public Media(String title2, String title, float cost) {
         this.id = ++idCounter;
         this.title = title;
         
@@ -65,9 +65,8 @@ public abstract class Media {
     }
 
    
-    // public abstract void play() throws PlayerException;
-    // public void play() throws PlayerException {
-    // System.out.println("Playing DVD: " + get_Title());
+
+  
 }
 
 

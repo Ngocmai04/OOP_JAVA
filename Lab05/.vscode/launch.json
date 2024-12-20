@@ -3,6 +3,27 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "CartScreen",
+			"request": "launch",
+			"mainClass": "src.aims.screen.CartScreen",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "Polymorphism",
+			"request": "launch",
+			"mainClass": "test.Polymorphism",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "src.App",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
 			"name": "AWTAccumulator",
 			"request": "launch",
 			"mainClass": "src.aims.swing.AWTAccumulator",

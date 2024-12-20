@@ -1,6 +1,7 @@
 package src.aims.media;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import src.aims.exception.PlayerException;
@@ -9,8 +10,8 @@ public class CompactDisc extends Media implements Playable {
     private String artist;
     private List<Track> tracks = new ArrayList<>();
 
-    // Constructor
-    public CompactDisc(int id, String title, String category, float cost, String artist, ArrayList<Track> tracks) {
+    // Constructor with artist as String and tracks as a List of Track objects
+    public CompactDisc(int id, String title, String category, float cost, String artist, List<Track> tracks) {
         super(title, category, cost);
         this.artist = artist;
         if (tracks != null) {
@@ -18,7 +19,12 @@ public class CompactDisc extends Media implements Playable {
         }
     }
 
-    // Getter
+    public CompactDisc(int id, String title, String category, float cost, int i, String string) {
+       super(title, title, cost);
+       
+    }
+
+    // Getter for artist
     public String getArtist() {
         return artist;
     }
@@ -53,17 +59,39 @@ public class CompactDisc extends Media implements Playable {
     }
 
     // Implement play() method
-    @Override
     public void play() throws PlayerException {
-        if (tracks.isEmpty()) {
-            System.out.println("No tracks to play.");
-        } else {
-            System.out.println("Playing CD: " + get_Title());
-            System.out.println("Artist: " + artist);
-            for (Track track : tracks) {
-                track.play(); // Call play() on each Track
+        if (this.getLength() > 0) {
+            // Get an iterator for the tracks
+            Iterator<Track> iterator = tracks.iterator();
+            Track nextTrack;
+            
+            // Iterate through all tracks
+            while (iterator.hasNext()) {
+                nextTrack = iterator.next();  // Get the next track in the iterator
+                try {
+                    nextTrack.play();  // Attempt to play the track
+                } catch (PlayerException e) {
+                    throw e;  // Propagate the exception if it occurs
+                }
             }
+        } else {
+            System.out.println("No tracks to play.");
         }
+    }
+
+    // Set the artist's name
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    // Get the list of tracks
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    // Set the list of tracks
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
     }
 
     // Override toString() to display CD information

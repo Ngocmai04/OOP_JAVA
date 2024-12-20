@@ -1,7 +1,4 @@
 package src.aims.screen;
-
-
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -18,15 +15,23 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class StoreScreen1 extends JFrame {
-    private Store store;
+import src.aims.cart.Cart;
+import src.aims.media.Media;
+import src.aims.store.STORE;
 
-    public Store getStore() {
+public class StoreScreen1 extends JFrame {
+    private STORE store;
+    private Cart cart;  // Giỏ hàng của người dùng
+
+    public STORE getStore() {
         return store;
     }
 
-    public StoreScreen1(Store store) {
+    // Constructor
+    public StoreScreen1(STORE store, Cart cart) {
         this.store = store;
+        this.cart = cart;
+
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
         
@@ -82,71 +87,23 @@ public class StoreScreen1 extends JFrame {
     private JPanel createCenter() {
         JPanel center = new JPanel();
         center.setLayout(new GridLayout(3, 3, 2, 2));
-        ArrayList<Media> mediaInStore = store.getItemsInStore();
+
+        ArrayList<Media> mediaInStore = store.getItemsOrdered();
         for (int i = 0; i < Math.min(9, mediaInStore.size()); i++) { // Ensure we don't exceed the size of the list
-            MediaStore cell = new MediaStore(mediaInStore.get(i));
-            center.add(cell);
+            MediaStore mediaStorePanel = new MediaStore(mediaInStore.get(i), cart);
+            center.add(mediaStorePanel);
         }
+
         return center;
     }
 
-    public void setStore(Store store) {
+    public void setStore(STORE store) {
         this.store = store;
     }
 
     public static void main(String[] args) {
-        Store store = new Store(); // Replace with actual Store object initialization
-        new StoreScreen1(store);
+        STORE store = new STORE(); // Replace with actual Store object initialization
+        Cart cart = new Cart(); // Initialize Cart
+        new StoreScreen1(store, cart);
     }
-}
-
-// Dummy MediaStore class implementation
-class MediaStore extends JPanel {
-    public MediaStore(Media media) {
-        setLayout(new BorderLayout());
-        JLabel titleLabel = new JLabel(media.getTitle());
-        titleLabel.setHorizontalAlignment(JLabel.CENTER);
-        add(titleLabel, BorderLayout.CENTER);
-    }
-}
-
-// Dummy Store class implementation
-class Store {
-    private ArrayList<Media> items;
-
-    public Store() {
-        items = new ArrayList<>();
-        // Populate store with dummy data
-        items.add(new Media("Book 1", null, 0));
-        items.add(new Media("Book 2", null, 0));
-        items.add(new Media("CD 1", null, 0));
-        items.add(new Media("DVD 1", null, 0));
-    }
-
-    public ArrayList<Media> getItemsInStore() {
-        return items;
-    }
-}
-
-// Dummy Media class implementation
-class Media {
-    private String title;
-
-    public Media(String title, String category, float cost) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    // public float get_Cost() {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'get_Cost'");
-    // }
-
-    // public String get_Title() {
-    //     // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'get_Title'");
-    // }
 }
