@@ -2,6 +2,34 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"type": "java",
+			"name": "SwingAccumulator",
+			"request": "launch",
+			"mainClass": "SwingAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "NumberGrid",
+			"request": "launch",
+			"mainClass": "NumberGrid",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "AWTAccumulator",
+			"request": "launch",
+			"mainClass": "AWTAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "MainClass",
+			"request": "launch",
+			"mainClass": "MainClass",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
 			"vmArgs": "--module-path \"d:/OOP_JAVA/.vscode/lib\" --add-modules javafx.controls,javafx.fxml",
 			"type": "java",
 			"name": "Launch Current File",
