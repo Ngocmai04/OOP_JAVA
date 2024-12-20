@@ -3,6 +3,20 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "StoreScreen1",
+			"request": "launch",
+			"mainClass": "screen.StoreScreen1",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "StoreScreen",
+			"request": "launch",
+			"mainClass": "StoreScreen",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
 			"name": "SwingAccumulator",
 			"request": "launch",
 			"mainClass": "SwingAccumulator",

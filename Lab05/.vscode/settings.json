@@ -1,17 +1,16 @@
 {
 	"java.project.sourcePaths": [
-		"src"
+		"AimProject/src/aims/screen",
+		"AimProject/src/aims/media",
+		"AimProject/src/aims/swing",
+		"bin",
+		"AimProject\\src\\aims\\store",
+		"AimProject\\src\\aims\\cart"
 	],
 	"java.project.outputPath": "bin",
-	"java.project.referencedLibraries": [
-		"lib/**/*.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.base.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.controls.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.fxml.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.graphics.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.media.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.swing.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx.web.jar",
-		"d:/OOP_JAVA/.vscode/lib/javafx-swt.ja"
-	]
+	"java.project.referencedLibraries": [],
+	"java.format.settings.url": ".vscode/java-formatter.xml",
+	"[java]": {
+		"editor.insertSpaces": true
+	}
 }
