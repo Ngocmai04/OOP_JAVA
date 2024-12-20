@@ -1,5 +1,3 @@
-package Lab05.AimProject.src.aims.media;
-
 import java.util.ArrayList;
 import java.util.List;
 

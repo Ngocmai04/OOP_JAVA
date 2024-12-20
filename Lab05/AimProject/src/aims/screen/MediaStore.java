@@ -3,6 +3,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,17 +16,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Lab05.AimProject.src.aims.media.CompactDisc;
-import Lab05.AimProject.src.aims.media.DigitalVdDisc;
-import Lab05.AimProject.src.aims.media.Media;
-import Lab05.AimProject.src.aims.media.Playable;
-import Lab05.AimProject.src.aims.media.Track;
-
-public class MediaStore<Cart> extends JPanel {
-     @SuppressWarnings("unused")
+public class MediaStore<C extends Cart> extends JPanel {
     private Media media;
 
-    public MediaStore(Media media, Cart myCart) {
+    public MediaStore(Media media, C myCart) {
         if (media == null || myCart == null) {
             throw new IllegalArgumentException("Media or Cart cannot be null");
         }
@@ -33,7 +27,7 @@ public class MediaStore<Cart> extends JPanel {
         this.media = media;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        JLabel title = new JLabel(media.get_Title());
+        JLabel title = new JLabel(media.getTitle());
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 20));
         title.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -42,32 +36,24 @@ public class MediaStore<Cart> extends JPanel {
 
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
-        
+
         JButton btnAdd = new JButton("Add to cart");
         container.add(btnAdd);
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ((Object) myCart).addMedia(media);
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Media \"" + media.get_Title() + "\" has been added to the cart successfully!",
-                        "Add to Cart",
-                        JOptionPane.INFORMATION_MESSAGE
-                );
-            }
+        btnAdd.addActionListener(e -> {
+            myCart.addMedia(media);
+            JOptionPane.showMessageDialog(
+                null,
+                "Media \"" + media.getTitle() + "\" has been added to the cart successfully!",
+                "Add to Cart",
+                JOptionPane.INFORMATION_MESSAGE
+            );
         });
 
         if (media instanceof Playable) {
             JButton playBtn = new JButton("Play");
-            playBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    JDialog playDialog = createPlayDialog(media);
-                    playDialog.setVisible(true);
-                    playDialog.setSize(300, 200);
-                    playDialog.pack();
-                }
+            playBtn.addActionListener(e -> {
+                JDialog playDialog = createPlayDialog(media);
+                playDialog.setVisible(true);
             });
             container.add(playBtn);
         }
@@ -84,23 +70,31 @@ public class MediaStore<Cart> extends JPanel {
         JDialog playDialog = new JDialog();
         Container container = playDialog.getContentPane();
         playDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        container.add(Box.createRigidArea(new Dimension(10, 10)));
+        container.setLayout(new GridLayout(0, 1));
 
         if (media instanceof DigitalVdDisc) {
             DigitalVdDisc dvd = (DigitalVdDisc) media;
-            container.add(new JLabel("Playing DVD: " + dvd.get_Title()));
+            container.add(new JLabel("Playing DVD: " + dvd.getTitle()));
             container.add(new JLabel("DVD length: " + dvd.get_Length() + " min"));
         } else if (media instanceof CompactDisc) {
             CompactDisc cd = (CompactDisc) media;
-            container.add(new JLabel("Title: " + cd.get_Title()));
+            container.add(new JLabel("Title: " + cd.getTitle()));
             container.add(new JLabel("Artist: " + cd.getArtist()));
-            for (Track track : cd.addTrack(track )) {
-                container.add(new JLabel("Play: " + track.getTitle() + ". Length: " + track.getLength() + " min"));
+            for (Track track : cd.addTrack(track)) {
+                container.add(new JLabel("Track: " + track.getTitle() + " (" + track.getLength() + " min)"));
             }
         }
 
-        playDialog.setTitle("Play " + media.get_Title());
+        playDialog.setTitle("Play " + media.getTitle());
+        playDialog.pack();
         return playDialog;
+    }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
     }
 }

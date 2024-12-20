@@ -5,7 +5,8 @@
 		"AimProject/src/aims/swing",
 		"bin",
 		"AimProject\\src\\aims\\store",
-		"AimProject\\src\\aims\\cart"
+		"AimProject\\src\\aims\\cart",
+		"AimProject"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [],

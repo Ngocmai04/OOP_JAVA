@@ -1,7 +1,5 @@
-package cart;
-
-import media.Media;
-import media.MediaComparator;
+package aims.cart;
+import Lab05.AimProject.aims.media.Media;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,11 +53,7 @@ public class Cart {
         }
     }
 
-     public void addMedia(Media media) {
-
-        itemsOrdered.add(media);
-
-    }
+     
 
     // Tính tổng giá trị của giỏ hàng
     public float totalCost() {

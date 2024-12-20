@@ -1,5 +1,3 @@
-package Lab05.AimProject.src.aims.media;
-
 public class Disc extends Media {
     public int length;
     public String director;

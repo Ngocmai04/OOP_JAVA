@@ -1,4 +1,4 @@
-package Lab05.AimProject.src.aims.media;
+
 
 public abstract class Media {
     private static int idCounter = 0; // Tạo ID tự động

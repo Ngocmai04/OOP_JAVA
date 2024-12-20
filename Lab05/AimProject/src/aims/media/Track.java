@@ -1,4 +1,4 @@
-package Lab05.AimProject.src.aims.media;
+
 
 public class Track implements Playable {
     private String title;

@@ -115,10 +115,10 @@ class Store {
     public Store() {
         items = new ArrayList<>();
         // Populate store with dummy data
-        items.add(new Media("Book 1"));
-        items.add(new Media("Book 2"));
-        items.add(new Media("CD 1"));
-        items.add(new Media("DVD 1"));
+        items.add(new Media("Book 1", null, 0));
+        items.add(new Media("Book 2", null, 0));
+        items.add(new Media("CD 1", null, 0));
+        items.add(new Media("DVD 1", null, 0));
     }
 
     public ArrayList<Media> getItemsInStore() {
@@ -130,11 +130,21 @@ class Store {
 class Media {
     private String title;
 
-    public Media(String title) {
+    public Media(String title, String category, float cost) {
         this.title = title;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public float get_Cost() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get_Cost'");
+    }
+
+    public String get_Title() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get_Title'");
     }
 }

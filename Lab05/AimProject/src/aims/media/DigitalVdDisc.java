@@ -1,6 +1,3 @@
-package Lab05.AimProject.src.aims.media;
-
-
 public class DigitalVdDisc extends Media implements Playable {
     private String director;
     private int length;
@@ -44,7 +41,7 @@ public class DigitalVdDisc extends Media implements Playable {
     @Override
     public void play() {
         if (get_Length() > 0) {
-            System.out.println("Playing DVD: " + get_Title());
+            System.out.println("Playing DVD: " + getTitle());
             System.out.println("DVD length: " + get_Length());
         } else {
             System.out.println("Cannot play this DVD. Invalid length.");
