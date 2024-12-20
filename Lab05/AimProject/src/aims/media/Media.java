@@ -1,3 +1,5 @@
+package src.aims.media;
+
 
 
 public abstract class Media {
@@ -61,4 +63,11 @@ public abstract class Media {
                 ", category='" + category + '\'' +
                 ", cost=" + cost + '}';
     }
+
+   
+    // public abstract void play() throws PlayerException;
+    // public void play() throws PlayerException {
+    // System.out.println("Playing DVD: " + get_Title());
 }
+
+

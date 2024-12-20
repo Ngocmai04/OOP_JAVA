@@ -1,7 +1,9 @@
-package swing;
-import javax.swing.*;
+package src.aims.swing;
+
+
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class SwingAccumulator extends JFrame {
     private JTextField tfInput;

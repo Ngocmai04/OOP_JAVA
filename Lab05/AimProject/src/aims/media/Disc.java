@@ -1,3 +1,7 @@
+package src.aims.media;
+
+
+
 public class Disc extends Media {
     public int length;
     public String director;
@@ -15,5 +19,7 @@ public class Disc extends Media {
     public String getDirector() {
         return director;
     }
+
+    
 
 }

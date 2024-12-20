@@ -1,5 +1,7 @@
+package src.aims.media;
 
+import src.aims.exception.PlayerException;
 
 public interface Playable {
-    void play();
+    public void play() throws PlayerException, PlayerException; 
 }

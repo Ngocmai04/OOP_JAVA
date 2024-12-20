@@ -1,11 +1,5 @@
 {
 	"java.project.sourcePaths": [
-		"AimProject/src/aims/screen",
-		"AimProject/src/aims/media",
-		"AimProject/src/aims/swing",
-		"bin",
-		"AimProject\\src\\aims\\store",
-		"AimProject\\src\\aims\\cart",
 		"AimProject"
 	],
 	"java.project.outputPath": "bin",

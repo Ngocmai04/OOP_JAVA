@@ -1,5 +1,9 @@
+package src.aims.media;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import src.aims.exception.PlayerException;
 
 public class CompactDisc extends Media implements Playable {
     private String artist;
@@ -50,7 +54,7 @@ public class CompactDisc extends Media implements Playable {
 
     // Implement play() method
     @Override
-    public void play() {
+    public void play() throws PlayerException {
         if (tracks.isEmpty()) {
             System.out.println("No tracks to play.");
         } else {

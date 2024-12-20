@@ -1,6 +1,4 @@
-package swing;
-
-
+package src.aims.swing;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -33,6 +31,29 @@ public class AWTAccumulator extends Frame {
     
     public static void main(String[] args) {
         new AWTAccumulator();
+    }
+
+    public AWTAccumulator(TextField tfInput, TextField tfOutput) throws HeadlessException {
+        this.tfInput = tfInput;
+        this.tfOutput = tfOutput;
+    }
+
+    public AWTAccumulator(TextField tfInput, TextField tfOutput, GraphicsConfiguration gc) {
+        super(gc);
+        this.tfInput = tfInput;
+        this.tfOutput = tfOutput;
+    }
+
+    public AWTAccumulator(TextField tfInput, TextField tfOutput, String title) throws HeadlessException {
+        super(title);
+        this.tfInput = tfInput;
+        this.tfOutput = tfOutput;
+    }
+
+    public AWTAccumulator(TextField tfInput, TextField tfOutput, String title, GraphicsConfiguration gc) {
+        super(title, gc);
+        this.tfInput = tfInput;
+        this.tfOutput = tfOutput;
     }
 
     private class TFInputListener implements ActionListener{

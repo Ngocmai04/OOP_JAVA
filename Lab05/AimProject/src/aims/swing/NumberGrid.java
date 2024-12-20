@@ -1,8 +1,10 @@
-package swing;
-import javax.swing.*;
+package src.aims.swing;
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class NumberGrid extends JFrame {
     private JButton[] btnNumbers = new JButton[10];

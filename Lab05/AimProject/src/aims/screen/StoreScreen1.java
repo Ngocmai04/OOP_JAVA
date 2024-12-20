@@ -1,3 +1,5 @@
+package src.aims.screen;
+
 
 
 import java.awt.BorderLayout;
@@ -138,13 +140,13 @@ class Media {
         return title;
     }
 
-    public float get_Cost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get_Cost'");
-    }
+    // public float get_Cost() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'get_Cost'");
+    // }
 
-    public String get_Title() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get_Title'");
-    }
+    // public String get_Title() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'get_Title'");
+    // }
 }

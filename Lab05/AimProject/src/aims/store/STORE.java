@@ -1,7 +1,6 @@
-package aims.store;
+package src.aims.store;
+import src.aims.media.Media;
 import java.util.LinkedList;
-
-import Lab05.AimProject.src.aims.media.Media;
 
 public class STORE {
     private LinkedList<Media> itemsInStore = new LinkedList<Media>();
@@ -34,6 +33,14 @@ public class STORE {
         } else {
             System.out.println("Media already exists in the store.");
         }
+    }
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.get_Title().equalsIgnoreCase(title)) {
+                return media;
+            }
+        }
+        return null;
     }
 
     // In ra tất cả các phương tiện trong cửa hàng

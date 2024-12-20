@@ -1,5 +1,6 @@
 
-
+package src.aims.media;
+import src.aims.exception.PlayerException;
 public class Track implements Playable {
     private String title;
     private int length;
@@ -29,7 +30,7 @@ public class Track implements Playable {
 
     // Triển khai play() từ Playable
     @Override
-    public void play() {
+    public void play() throws PlayerException {
         if (length > 0) {
             System.out.println("Playing Track: " + title);
             System.out.println("Track length: " + length);

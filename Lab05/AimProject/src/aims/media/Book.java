@@ -1,5 +1,9 @@
+package src.aims.media;
+
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 
 public class Book extends Media {
@@ -35,4 +39,10 @@ public class Book extends Media {
     public String toString() {
         return super.toString() + ", authors=" + authors;
     }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
+    
 }

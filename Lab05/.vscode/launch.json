@@ -3,6 +3,20 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "AWTAccumulator",
+			"request": "launch",
+			"mainClass": "src.aims.swing.AWTAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "StoreScreen1",
+			"request": "launch",
+			"mainClass": "src.aims.screen.StoreScreen1",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
 			"name": "StoreScreen1",
 			"request": "launch",
 			"mainClass": "screen.StoreScreen1",
@@ -54,6 +68,13 @@
 			"vmArgs": "--module-path \"d:/OOP_JAVA/.vscode/lib\" --add-modules javafx.controls,javafx.fxml",
 			"type": "java",
 			"name": "Launch App",
+			"request": "launch",
+			"mainClass": "App"
+		},
+		{
+			"vmArgs": "--module-path C:/Users/Ngoc Mai/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml",
+			"type": "java",
+			"name": "Launch App with New Path",
 			"request": "launch",
 			"mainClass": "App"
 		}

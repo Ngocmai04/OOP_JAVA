@@ -1,9 +1,10 @@
-package Lab04.AimProject.src.aims;
-
-import Lab04.AimProject.src.aims.cart.Cart;
-import Lab04.AimProject.src.aims.media.*;
-import Lab04.AimProject.src.aims.store.STORE;
-
+package src.aims;
+import src.aims.media.Media;
+import src.aims.store.STORE;
+import src.aims.cart.Cart;
+import src.aims.exception.PlayerException;
+import src.aims.media.DigitalVdDisc;
+import src.aims.media.CompactDisc;
 import java.util.Scanner;
 
 public class AIMS {
@@ -97,18 +98,18 @@ public class AIMS {
     // Thêm phương tiện vào giỏ hàng
     public static void addMediaToCart() {
         System.out.print("Enter media title to add to cart: ");
-        String title = scanner.nextLine();
+        // String title = scanner.nextLine();
         // Giả sử người dùng muốn thêm phương tiện này vào giỏ hàng
-        Media media = store.searchByTitle(title);  // tìm kiếm phương tiện theo tiêu đề
-        if (media != null) {
-            cart.addMedia(media);
-        } else {
-            System.out.println("Media not found.");
-        }
+        // Media media = store.searchByTitle(title);  // tìm kiếm phương tiện theo tiêu đề
+        // if (media != null) {
+        //     cart.addMedia(media);
+        // } else {
+        //     System.out.println("Media not found.");
+        // }
     }
 
     // Phát phương tiện
-    public static void playMedia() {
+    public static void playMedia(){
         System.out.print("Enter media title to play: ");
         String title = scanner.nextLine();
         Media media = cart.searchByTitle(title);  // Tìm kiếm phương tiện
@@ -218,8 +219,8 @@ public class AIMS {
         System.out.print("Enter media title to remove from cart: ");
         String title = scanner.nextLine();
         // Giả sử phương tiện đã được thêm vào giỏ hàng, thực tế cần thêm mã để xác thực
-        Media media = new DigitalVdDisc(title, "Sci-fi", "Director", 19.99f);
-        cart.removeMedia(media);
+        // Media media = new DigitalVdDisc(title, "Sci-fi", "Director", 19.99f);
+        cart.removeMedia(title);
     }
 
     // Đặt hàng
@@ -232,7 +233,7 @@ public class AIMS {
     // Tạo các phương tiện mẫu cho cửa hàng
     public static void createSampleStore() {
         Media dvd1 = new DigitalVdDisc("Inception", "Sci-fi", "Christopher Nolan", 148, 19.99f);
-        Media cd1 = new CompactDisc("Greatest Hits", "Music", 15.0f, "Artist A");
+        Media cd1 = new CompactDisc(0, "Greatest Hits", "Music", 15.0f, "Artist A", null);
        
         store.addMedia(dvd1);
         store.addMedia(cd1);
