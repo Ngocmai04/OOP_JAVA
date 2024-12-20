@@ -38,6 +38,7 @@ public class Cart {
         return addCount;
     }
 
+
     // Xóa phương tiện khỏi giỏ hàng
     public void removeMedia(Media media) {
         boolean found = false;
@@ -52,6 +53,12 @@ public class Cart {
         if (!found) {
             System.out.println("No matching media found.");
         }
+    }
+
+     public void addMedia(Media media) {
+
+        itemsOrdered.add(media);
+
     }
 
     // Tính tổng giá trị của giỏ hàng
