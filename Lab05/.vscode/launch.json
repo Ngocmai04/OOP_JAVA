@@ -1,0 +1,117 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "AWTAccumulator",
+			"request": "launch",
+			"mainClass": "swingg.AWTAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "Painter",
+			"request": "launch",
+			"mainClass": "javafx.Painter",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "CartScreen",
+			"request": "launch",
+			"mainClass": "src.aims.screen.CartScreen",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "Polymorphism",
+			"request": "launch",
+			"mainClass": "test.Polymorphism",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "src.App",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "AWTAccumulator",
+			"request": "launch",
+			"mainClass": "src.aims.swing.AWTAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "StoreScreen1",
+			"request": "launch",
+			"mainClass": "src.aims.screen.StoreScreen1",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "StoreScreen1",
+			"request": "launch",
+			"mainClass": "screen.StoreScreen1",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "StoreScreen",
+			"request": "launch",
+			"mainClass": "StoreScreen",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "SwingAccumulator",
+			"request": "launch",
+			"mainClass": "SwingAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "NumberGrid",
+			"request": "launch",
+			"mainClass": "NumberGrid",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "AWTAccumulator",
+			"request": "launch",
+			"mainClass": "AWTAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "MainClass",
+			"request": "launch",
+			"mainClass": "MainClass",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"vmArgs": "--module-path \"d:/OOP_JAVA/.vscode/lib\" --add-modules javafx.controls,javafx.fxml",
+			"type": "java",
+			"name": "Launch Current File",
+			"request": "launch",
+			"mainClass": "${file}"
+		},
+		{
+			"vmArgs": "--module-path \"d:/OOP_JAVA/.vscode/lib\" --add-modules javafx.controls,javafx.fxml",
+			"type": "java",
+			"name": "Launch App",
+			"request": "launch",
+			"mainClass": "App"
+		},
+		{
+			"vmArgs": "--module-path C:/Users/Ngoc Mai/Downloads/openjfx-23.0.1_windows-x64_bin-sdk/javafx-sdk-23.0.1/lib --add-modules javafx.controls,javafx.fxml",
+			"type": "java",
+			"name": "Launch App with New Path",
+			"request": "launch",
+			"mainClass": "App"
+		}
+	]
+}

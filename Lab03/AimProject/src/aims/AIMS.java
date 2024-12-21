@@ -1,7 +1,6 @@
-package Lab03.AimProject.src.aims.AIMS;
-import Lab03.AimProject.src.aims.disc.*;
-
+package Lab03.AimProject.src.aims;
 import Lab03.AimProject.src.aims.cart.*;
+import Lab03.AimProject.src.aims.disc.*;
 public class AIMS {
     public static void main(String[] args) {
         // Create an empty cart

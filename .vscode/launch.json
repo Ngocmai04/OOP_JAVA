@@ -1,0 +1,218 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "AWTAccumulator",
+            "request": "launch",
+            "mainClass": "AWTAccumulator",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "AIMS",
+            "request": "launch",
+            "mainClass": "AIMS",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "AddTwoMatrices",
+            "request": "launch",
+            "mainClass": "AddTwoMatrices",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "Calculate",
+            "request": "launch",
+            "mainClass": "Calculate",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "CartTest",
+            "request": "launch",
+            "mainClass": "CartTest",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "ChoosingOption",
+            "request": "launch",
+            "mainClass": "ChoosingOption",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "DaysOfMonth",
+            "request": "launch",
+            "mainClass": "DaysOfMonth",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "Equations",
+            "request": "launch",
+            "mainClass": "Equations",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "FirstDialog",
+            "request": "launch",
+            "mainClass": "FirstDialog",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "HelloNameDialog",
+            "request": "launch",
+            "mainClass": "HelloNameDialog",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "HelloWorld",
+            "request": "launch",
+            "mainClass": "HelloWorld",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "InputFromKeyboard",
+            "request": "launch",
+            "mainClass": "InputFromKeyboard",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "AIMS(1)",
+            "request": "launch",
+            "mainClass": "Lab03.AimProject.src.aims.AIMS",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "AIMS(2)",
+            "request": "launch",
+            "mainClass": "Lab03.AimProject.src.aims.store.AIMS",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "CartTest(1)",
+            "request": "launch",
+            "mainClass": "Lab03.AimProject.src.test.CartTest",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "TestPassingParameter",
+            "request": "launch",
+            "mainClass": "Lab03.AimProject.src.test.TestPassingParameter",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "C_k_n",
+            "request": "launch",
+            "mainClass": "Lab03.OtherProject.Practice.C_k_n",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "ConcatenationInLoops",
+            "request": "launch",
+            "mainClass": "Lab03.OtherProject.garbage.ConcatenationInLoops",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "GarbageCreator",
+            "request": "launch",
+            "mainClass": "Lab03.OtherProject.garbage.GarbageCreator",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "NoGarbage",
+            "request": "launch",
+            "mainClass": "Lab03.OtherProject.garbage.NoGarbage",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "AIMS(3)",
+            "request": "launch",
+            "mainClass": "Lab04.AimProject.src.aims.AIMS",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "C_k_n(1)",
+            "request": "launch",
+            "mainClass": "Lab04.OtherProject.Practice.C_k_n",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "ConcatenationInLoops(1)",
+            "request": "launch",
+            "mainClass": "Lab04.OtherProject.garbage.ConcatenationInLoops",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "GarbageCreator(1)",
+            "request": "launch",
+            "mainClass": "Lab04.OtherProject.garbage.GarbageCreator",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "NoGarbage(1)",
+            "request": "launch",
+            "mainClass": "Lab04.OtherProject.garbage.NoGarbage",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "NumericArray",
+            "request": "launch",
+            "mainClass": "NumericArray",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "ShowTwoNumbers",
+            "request": "launch",
+            "mainClass": "ShowTwoNumbers",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "TestPassingParameter(1)",
+            "request": "launch",
+            "mainClass": "TestPassingParameter",
+            "projectName": "OOP_JAVA_d5dac0a"
+        },
+        {
+            "type": "java",
+            "name": "Triangle",
+            "request": "launch",
+            "mainClass": "Triangle",
+            "projectName": "OOP_JAVA_d5dac0a"
+        }
+    ]
+}
