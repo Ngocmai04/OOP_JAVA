@@ -1,14 +1,26 @@
 package src.aims.screen;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import src.aims.cart.Cart;
 import src.aims.media.Media;
 import src.aims.media.Playable;
-
 import java.util.ArrayList;
+import javafx.event.EventHandler;
+import javax.swing.JDialog;
 
 public class CartScreenController {
     private Cart cart;
@@ -39,114 +51,117 @@ public class CartScreenController {
     private Label totalPrice;
 
     public CartScreenController(Cart cart) {
+        super();
         this.cart = cart;
     }
 
     @FXML
     private void initialize() {
-        // Set up columns in the table
-        colMediaTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        colMediacategory.setCellValueFactory(new PropertyValueFactory<>("category"));
-        colMediaCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
-
-        // Populate the table with the cart items
-        tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+        colMediaTitle.setCellValueFactory(new PropertyValueFactory<Media,String>("title"));
+        colMediacategory.setCellValueFactory(new PropertyValueFactory<Media,String>("category"));
+        colMediaCost.setCellValueFactory(new PropertyValueFactory<Media,Float>("cost"));
+        tblMedia.setItems(FXCollections.observableList(this.cart.getItemsOrdered()));
         tblMedia.setPlaceholder(new Label("No item in cart"));
 
-        // Hide Play and Remove buttons initially
+
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
-        // Remove media when the Remove button is clicked
-        btnRemove.setOnAction(event -> {
-            Media media = tblMedia.getSelectionModel().getSelectedItem();
-            if (media != null) {
+        btnRemove.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                Media media = tblMedia.getSelectionModel().getSelectedItem();
                 cart.removeMedia(media);
-                updateTotalPrice();
-                tblMedia.refresh(); // Refresh table to reflect changes
+                totalPrice.setText(Float.toString((float) cart.totalCost()) +"$");
+                tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+            }
+        });
+        tfFilter.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                showFilterMedia(t1);
             }
         });
 
-        // Filter media based on the text field
-        tfFilter.textProperty().addListener((observable, oldValue, newValue) -> showFilterMedia(newValue));
+        tblMedia.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<Media>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Media> observableValue, Media media, Media t1) {
+                        updateButtonBar(t1);
+                    }
+                }
+        );
+        totalPrice.setText(Float.toString((float) cart.totalCost()) + "$");
 
-        // Update buttons when selection changes
-        tblMedia.getSelectionModel().selectedItemProperty().addListener((observable, oldMedia, newMedia) -> updateButtonBar(newMedia));
-
-        updateTotalPrice(); // Update the total price on startup
-
-        // Play media when the Play button is clicked
-        btnPlay.setOnAction(event -> {
-            Media selectedMedia = tblMedia.getSelectionModel().getSelectedItem();
-            if (selectedMedia instanceof Playable) {
-                Alert playAlert = new Alert(Alert.AlertType.INFORMATION);
-                playAlert.setTitle("Playing Media");
-                playAlert.setHeaderText(null);
-                playAlert.setContentText("Playing: " + selectedMedia.get_Title());
-                playAlert.showAndWait();
+        btnPlay.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JDialog playDialog = MediaStore.createPlayDialog(tblMedia.getSelectionModel().getSelectedItem());
+                playDialog.setVisible(true);
+                playDialog.setSize(300,200);
+                playDialog.pack();
             }
         });
 
-        // Place order when the Place Order button is clicked
-        btnPlaceOrder.setOnAction(event -> {
-            createPopUp();
-            cart.getItemsOrdered().clear(); // Clear the cart after placing the order
-            tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered())); // Update table
-            updateTotalPrice(); // Reset the total price
+        btnPlaceOrder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                createPopUp();
+                cart.getItemsOrdered().clear();
+                tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+                totalPrice.setText(Float.toString((float) cart.totalCost()) + "$");
+            }
         });
     }
 
-    // Update the total price label
-    private void updateTotalPrice() {
-        totalPrice.setText(String.format("%.2f $", cart.totalCost()));
+    @FXML
+    void updateButtonBar(Media media) {
+        btnRemove.setVisible(true);
+        if(media instanceof Playable) {
+            btnPlay.setVisible(true);
+        } else {
+            btnPlay.setVisible(false);
+        }
     }
 
     @FXML
-    // Show/hide buttons depending on the media selected
-    private void updateButtonBar(Media media) {
-        btnRemove.setVisible(media != null);
-        btnPlay.setVisible(media instanceof Playable);
-    }
-
-    @FXML
-    // Show filtered media based on filter criteria
-    private void showFilterMedia(String filter) {
+    void showFilterMedia(String t1) {
         if (filterCategory.getSelectedToggle() == radioBtnFilterTitle) {
-            ArrayList<Media> filterByTitle = new ArrayList<>();
+            ArrayList<Media> filterByTitle = new ArrayList<Media>();
             for (Media item : cart.getItemsOrdered()) {
-                if (item.get_Title().toLowerCase().contains(filter.toLowerCase())) {
+                if (item.get_Title().contains(t1)) {
                     filterByTitle.add(item);
                 }
             }
             tblMedia.setItems(FXCollections.observableList(filterByTitle));
         } else if (filterCategory.getSelectedToggle() == radioBtnFilterId) {
-            try {
-                int id = Integer.parseInt(filter);
-                ArrayList<Media> filterByID = new ArrayList<>();
-                for (Media item : cart.getItemsOrdered()) {
-                    if (item.get_ID() == id) {
-                        filterByID.add(item);
-                    }
+            ArrayList<Media> filterByID = new ArrayList<Media>();
+            for (Media item : cart.getItemsOrdered()) {
+                if (item.get_ID() == Integer.parseInt(t1)) {
+                    filterByID.add(item);
                 }
-                tblMedia.setItems(FXCollections.observableList(filterByID));
-            } catch (NumberFormatException e) {
-                tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered())); // Reset to full list
             }
+            tblMedia.setItems(FXCollections.observableList(filterByID));
         }
     }
 
     @FXML
-    // Create a pop-up after placing the order
-    private void createPopUp() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Place Order");
-        alert.setHeaderText("Order Placed Successfully!");
-        alert.setContentText("Your total is: " + String.format("%.2f $", cart.totalCost()));
-        alert.showAndWait();
-    }
+    void createPopUp() {
+        Stage popupwindow =new Stage();
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Place order");
 
-    // Optionally, set a new cart
-    public void setCart(Cart cart2) {
-       this.cart = cart2;
+        Label label1 = new Label("You have place your order !");
+        label1.setFont(Font.font("Arial", FontWeight.BOLD,14));
+        Label label2 = new Label("Your bill total is " + Float.toString((float) cart.totalCost()) + "$");
+        Button button1= new Button("OK !");
+        label2.setTextFill(Color.RED);
+        button1.setOnAction(e -> popupwindow.close());
+        VBox layout= new VBox(10);
+        layout.getChildren().addAll(label1, label2,button1);
+        layout.setAlignment(Pos.CENTER);
+        Scene scene1= new Scene(layout, 300, 200);
+        popupwindow.setScene(scene1);
+        popupwindow.show();
     }
 }

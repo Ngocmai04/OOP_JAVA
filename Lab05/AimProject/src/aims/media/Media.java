@@ -78,4 +78,13 @@ public abstract class Media {
                 "category='" + category + '\'' + "\n" +
                 "cost=" + cost + '}';
     }
+
+    public void displayDetails() {
+        System.out.println("----------------MEDIA's DETAILs----------------");
+        System.out.println("ID: " + id);
+        System.out.println("Title: " + title);
+        System.out.println("Category: " + category);
+        System.out.println("Cost: " + cost);
+        System.out.println("---------------END-----------------");
+    }
 }

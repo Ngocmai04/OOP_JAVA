@@ -6,9 +6,8 @@ import src.aims.exception.PlayerException;
 import java.util.Scanner;
 import java.util.Iterator;
 
-
 public class AIMS {
-
+    
     
         public static void main(String[] args) {
             STORE STORE = new STORE();
@@ -377,8 +376,6 @@ public class AIMS {
     public static void placeOrder(Cart cart) {
         Iterator<Media> iterator = cart.getItemsOrdered().iterator();
         while (iterator.hasNext()) {
-            @SuppressWarnings("unused")
-            Media inMedia = iterator.next();
             iterator.remove();
         }
         System.out.println("Order placed.");

@@ -72,7 +72,7 @@ public class STORE {
             itemsInStore.add(new CompactDisc("Breaking Bad - Season 1", "TV Series", 29.99));
             itemsInStore.add(new CompactDisc("Inception", "Movie", 14.99));
             itemsInStore.add(new CompactDisc("The Witcher - Season 1", "TV Series", 24.99));
-            itemsInStore.add(new CompactDisc("Avatar", "Movie", 18.50));
+        
             
             // Print a message to confirm initialization
             System.out.println("Store initialized with sample media.");
