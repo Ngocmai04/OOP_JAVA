@@ -1,4 +1,4 @@
-package aims.screen;
+package src.aims.screen;
 
 import javax.swing.*;
 import java.awt.*;
