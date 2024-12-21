@@ -1,10 +1,13 @@
 {
 	"java.project.sourcePaths": [
-		"AimProject"
+		"AimProject",
+		"GUIProject"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [
-		"test-lib\\**\\*.jar"
+		"d:\\OOP_JAVA\\Lab05\\test-lib\\testng-7.10.2.jar",
+		"d:\\OOP_JAVA\\Lab05\\test-lib\\slf4j-api-2.1.0-alpha1.jar",
+		"d:\\OOP_JAVA\\Lab05\\test-lib\\jcommander-1.82.jar"
 	],
 	"java.format.settings.url": ".vscode/java-formatter.xml",
 	"[java]": {

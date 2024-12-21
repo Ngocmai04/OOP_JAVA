@@ -1,8 +1,10 @@
 package src.aims.media;
 
-
+import java.util.Comparator;
 
 public abstract class Media {
+    @SuppressWarnings("rawtypes")
+    public static final Comparator COMPARE_BY_TITLE_COST = null;
     private static int idCounter = 0; // Tạo ID tự động
     private int id;
     private String title;

@@ -3,6 +3,20 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "AWTAccumulator",
+			"request": "launch",
+			"mainClass": "swingg.AWTAccumulator",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "Painter",
+			"request": "launch",
+			"mainClass": "javafx.Painter",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
 			"name": "CartScreen",
 			"request": "launch",
 			"mainClass": "src.aims.screen.CartScreen",

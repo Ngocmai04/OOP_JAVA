@@ -1,131 +1,135 @@
 package src.aims.screen;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import src.aims.cart.Cart;
 import src.aims.media.Media;
 import src.aims.media.Playable;
-import javafx.event.ActionEvent;
+
+import java.util.ArrayList;
 
 public class CartScreenController {
     private Cart cart;
 
     @FXML
-    private TableView<Media> tblMedia;
-
+    private Button btnPlaceOrder;
     @FXML
-    private TableColumn<Media, String> colMediaTitle;
-
+    private TextField tfFilter;
     @FXML
-    private TableColumn<Media, String> colMediaCategory;
-
+    private ToggleGroup filterCategory;
     @FXML
-    private TableColumn<Media, Float> colMediaCost;
-
+    private RadioButton radioBtnFilterId;
+    @FXML
+    private RadioButton radioBtnFilterTitle;
     @FXML
     private Button btnPlay;
-
     @FXML
     private Button btnRemove;
-
     @FXML
-    private Label lbTotalCost;
+    private TableView<Media> tblMedia;
+    @FXML
+    private TableColumn<Media, String> colMediaTitle;
+    @FXML
+    private TableColumn<Media, String> colMediacategory;
+    @FXML
+    private TableColumn<Media, Float> colMediaCost;
+    @FXML
+    private Label totalPrice;
 
     public CartScreenController(Cart cart) {
-        super();
         this.cart = cart;
     }
 
     @FXML
     private void initialize() {
-        // Cấu hình các cột của bảng
         colMediaTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        colMediaCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colMediacategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colMediaCost.setCellValueFactory(new PropertyValueFactory<>("cost"));
-        
-        // Liên kết dữ liệu giỏ hàng với TableView
-        tblMedia.setItems(FXCollections.observableArrayList(this.cart.getItemsOrdered()));
-        
-        // Cập nhật tổng chi phí
-        lbTotalCost.setText(Double.toString(cart.totalCost()) + " $");
+        tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+        tblMedia.setPlaceholder(new Label("No item in cart"));
 
-        // Ẩn nút Play và Remove khi không có phương tiện được chọn
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
-        // Lắng nghe sự thay đổi khi chọn phương tiện
-        tblMedia.getSelectionModel().selectedItemProperty().addListener(
-            new ChangeListener<Media>() {
-                @Override
-                public void changed(ObservableValue<? extends Media> observable, Media oldValue, Media newValue) {
-                    if (newValue != null) {
-                        updateButtonBar(newValue);
-                    }
+        btnRemove.setOnAction(event -> {
+            Media media = tblMedia.getSelectionModel().getSelectedItem();
+            if (media != null) {
+                cart.removeMedia(media);
+                updateTotalPrice();
+                tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+            }
+        });
+
+        tfFilter.textProperty().addListener((observable, oldValue, newValue) -> showFilterMedia(newValue));
+
+        tblMedia.getSelectionModel().selectedItemProperty().addListener((observable, oldMedia, newMedia) -> updateButtonBar(newMedia));
+
+        updateTotalPrice();
+
+        btnPlay.setOnAction(event -> {
+            Media selectedMedia = tblMedia.getSelectionModel().getSelectedItem();
+            if (selectedMedia instanceof Playable) {
+                Alert playAlert = new Alert(Alert.AlertType.INFORMATION);
+                playAlert.setTitle("Playing Media");
+                playAlert.setHeaderText(null);
+                playAlert.setContentText("Playing: " + selectedMedia.get_Title());
+                playAlert.showAndWait();
+            }
+        });
+
+        btnPlaceOrder.setOnAction(event -> {
+            createPopUp();
+            cart.getItemsOrdered().clear();
+            tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+            updateTotalPrice();
+        });
+    }
+
+    private void updateTotalPrice() {
+        totalPrice.setText(String.format("%.2f $", cart.totalCost()));
+    }
+
+    @FXML
+    private void updateButtonBar(Media media) {
+        btnRemove.setVisible(media != null);
+        btnPlay.setVisible(media instanceof Playable);
+    }
+
+    @FXML
+    private void showFilterMedia(String filter) {
+        if (filterCategory.getSelectedToggle() == radioBtnFilterTitle) {
+            ArrayList<Media> filterByTitle = new ArrayList<>();
+            for (Media item : cart.getItemsOrdered()) {
+                if (item.get_Title().toLowerCase().contains(filter.toLowerCase())) {
+                    filterByTitle.add(item);
                 }
             }
-        );
-    }
-
-    void updateButtonBar(Media media) {
-        // Hiển thị nút xóa khi có phương tiện được chọn
-        btnRemove.setVisible(true);
-        
-        // Nếu phương tiện có thể phát, hiển thị nút Play
-        if (media instanceof Playable) {
-            btnPlay.setVisible(true);
-        } else {
-            btnPlay.setVisible(false);
+            tblMedia.setItems(FXCollections.observableList(filterByTitle));
+        } else if (filterCategory.getSelectedToggle() == radioBtnFilterId) {
+            try {
+                int id = Integer.parseInt(filter);
+                ArrayList<Media> filterByID = new ArrayList<>();
+                for (Media item : cart.getItemsOrdered()) {
+                    if (item.get_ID() == id) {
+                        filterByID.add(item);
+                    }
+                }
+                tblMedia.setItems(FXCollections.observableList(filterByID));
+            } catch (NumberFormatException e) {
+                tblMedia.setItems(FXCollections.observableList(cart.getItemsOrdered()));
+            }
         }
     }
 
     @FXML
-    void btnRemovePressed(ActionEvent event) {
-        // Xóa phương tiện được chọn khỏi giỏ hàng
-        Media media = tblMedia.getSelectionModel().getSelectedItem();
-        if (media != null) {
-            cart.removeMedia(media.get_Title());
-            tblMedia.setItems(FXCollections.observableArrayList(cart.getItemsOrdered()));  // Cập nhật bảng
-            lbTotalCost.setText(Double.toString(cart.totalCost()) + " $");
-        }
-    }
-
-    @FXML
-    void btnPlaceOrderPressed(ActionEvent event) {
-        // Hiển thị thông báo đặt hàng thành công
+    private void createPopUp() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Order Confirmation");
-        alert.setHeaderText(null);
-        alert.setContentText("Order has been placed successfully!");
+        alert.setTitle("Place Order");
+        alert.setHeaderText("Order Placed Successfully!");
+        alert.setContentText("Your total is: " + String.format("%.2f $", cart.totalCost()));
         alert.showAndWait();
-
-        // Xóa tất cả phương tiện trong giỏ hàng
-       
-        tblMedia.setItems(FXCollections.observableArrayList(cart.getItemsOrdered()));  // Cập nhật bảng
-        lbTotalCost.setText("0.0 $");
-
-        // Ẩn các nút
-        btnRemove.setVisible(false);
-        btnPlay.setVisible(false);
-    }
-
-    @FXML
-    void btnPlayPressed(ActionEvent event) {
-        // Hiển thị thông báo khi phát phương tiện
-        Media media = tblMedia.getSelectionModel().getSelectedItem();
-        if (media != null && media instanceof Playable) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Playing Media");
-            alert.setHeaderText(null);
-            alert.setContentText("Now playing: " + media.get_Title());
-            alert.showAndWait();
-        }
     }
 }
