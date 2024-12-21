@@ -79,19 +79,16 @@
                   <TableView fx:id="tblMedia">
                       <columns>
                           <TableColumn fx:id="colMediaTitle" prefWidth="75.0" text="Title">
-                              <!-- Kết nối cột với thuộc tính "title" -->
                               <cellValueFactory>
                                   <PropertyValueFactory property="title"/>
                               </cellValueFactory>
                           </TableColumn>
                           <TableColumn fx:id="colMediaCategory" prefWidth="75.0" text="Category">
-                              <!-- Kết nối cột với thuộc tính "category" -->
                               <cellValueFactory>
                                   <PropertyValueFactory property="category"/>
                               </cellValueFactory>
                           </TableColumn>
                           <TableColumn fx:id="colMediaCost" prefWidth="75.0" text="Cost">
-                              <!-- Kết nối cột với thuộc tính "cost" -->
                               <cellValueFactory>
                                   <PropertyValueFactory property="cost"/>
                               </cellValueFactory>
@@ -104,7 +101,7 @@
                   <ButtonBar prefHeight="40.0" prefWidth="200.0">
                     <buttons>
                       <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" text="Play" />
-                        <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
+                      <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
                     </buttons>
                   </ButtonBar>
                </children>

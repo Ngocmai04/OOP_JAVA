@@ -28,6 +28,14 @@ public class CompactDisc extends Media implements Playable {
         super(title, title, cost);
     }
 
+    public CompactDisc(int id, String title, String category, float cost, String director, int length, String artist2) {
+        super(title, title, cost);
+    }
+
+    public CompactDisc(String string, String string2, double d) {
+        super(string, string2, (float) d);
+    }
+
     // Getter for artist
     public String getArtist() {
         return artist;

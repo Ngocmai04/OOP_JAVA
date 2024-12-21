@@ -3,8 +3,20 @@ package src.aims.media;
 import java.util.Comparator;
 
 public abstract class Media {
-    @SuppressWarnings("rawtypes")
-    public static final Comparator COMPARE_BY_TITLE_COST = null;
+  
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new Comparator<Media>() {
+        @Override
+        public int compare(Media media1, Media media2) {
+            // So sánh theo tên, nếu tên giống nhau thì so sánh theo chi phí
+            int titleComparison = media1.get_Title().compareToIgnoreCase(media2.get_Title());
+            if (titleComparison != 0) {
+                return titleComparison;
+            } else {
+                return Float.compare(media1.get_Cost(), media2.get_Cost());
+            }
+        }
+    };
+    
     private static int idCounter = 0; // Tạo ID tự động
     private int id;
     private String title;
@@ -12,14 +24,15 @@ public abstract class Media {
     private float cost;
 
     // Constructor
-    public Media(String title2, String title, float cost) {
+    public Media(String title, String category, float cost) {
         this.id = ++idCounter;
         this.title = title;
-        
+        this.category = category;
         this.cost = cost;
     }
+    
 
-    // Getter và Setter với tên giữ nguyên
+    // Getter và Setter
     public int get_ID() {
         return id;
     }
@@ -48,27 +61,21 @@ public abstract class Media {
         this.cost = cost;
     }
 
-    // Override equals() để so sánh các Media theo title
+    // Override equals() để so sánh các Media theo id và title
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Media media = (Media) obj;
-        return title != null && title.equals(media.title);
+        return id == media.id && title.equals(media.title) && category.equals(media.category);
     }
 
     // Override toString() để hiển thị thông tin cơ bản của Media
     @Override
     public String toString() {
-        return "Media{id=" + id +
-                ", title='" + title + '\'' +
-                ", category='" + category + '\'' +
-                ", cost=" + cost + '}';
+        return "Media{id=" + id + "\n" +
+                "title='" + title + '\'' + "\n" +
+                "category='" + category + '\'' + "\n" +
+                "cost=" + cost + '}';
     }
-
-   
-
-  
 }
-
-
