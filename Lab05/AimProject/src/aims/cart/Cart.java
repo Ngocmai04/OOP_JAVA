@@ -44,6 +44,7 @@ public class Cart {
     }
 
     // Remove a media item from the cart by its title
+    @SuppressWarnings("unlikely-arg-type")
     public void removeMedia(String title) {
         if (itemOrdered.remove(title)) {
             System.out.println("Media removed: " + title);
@@ -112,6 +113,34 @@ public class Cart {
     // Get the items ordered as an ObservableList
     public ObservableList<Media> getItemsOrdered() {
         return FXCollections.observableArrayList(itemOrdered);
+    }
+
+    public Media findMediaByTitle(String title) {
+       if (title == null) {
+            throw new IllegalArgumentException("Title cannot be null");
+        }
+        else {
+            for (Media media : itemOrdered) {
+                if (media.get_Title().equalsIgnoreCase(title)) {
+                    return media;
+                }
+            }
+        }
+        throw new UnsupportedOperationException("Unimplemented method 'findMediaByTitle'");
+    }
+
+    public void removeMedia(Media media1) {
+        if (media1 == null) {
+            throw new IllegalArgumentException("Media cannot be null");
+        }
+        else {
+            if (itemOrdered.remove(media1)) {
+                System.out.println("Media removed: " + media1.get_Title());
+            } else {
+                System.out.println("No matching media found.");
+            }
+        }
+        throw new UnsupportedOperationException("Unimplemented method 'removeMedia'");
     }
 
    

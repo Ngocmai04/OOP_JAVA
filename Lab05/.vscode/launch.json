@@ -3,6 +3,20 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "src.aims.screen.App",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
+			"name": "AIMS",
+			"request": "launch",
+			"mainClass": "src.aims.AIMS",
+			"projectName": "Lab05_e8fb49ed"
+		},
+		{
+			"type": "java",
 			"name": "AWTAccumulator",
 			"request": "launch",
 			"mainClass": "swingg.AWTAccumulator",

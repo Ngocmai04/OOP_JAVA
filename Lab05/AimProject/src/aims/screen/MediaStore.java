@@ -14,11 +14,13 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import src.aims.cart.Cart;
 import src.aims.media.CompactDisc;
 import src.aims.media.DigitalVdDisc;
 import src.aims.media.Media;
+import src.aims.media.Playable;
 import src.aims.media.Track;
 
 public class MediaStore extends JPanel {
@@ -55,11 +57,16 @@ public class MediaStore extends JPanel {
             );
         });
 
-        if (media instanceof DigitalVdDisc || media instanceof CompactDisc) {
-            JButton playBtn = new JButton("Play");
-            playBtn.addActionListener(e -> {
-                JDialog playDialog = createPlayDialog(media);
-                playDialog.setVisible(true);
+        if(media instanceof Playable) {
+            JButton playBtn= new JButton("Play");
+            playBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JDialog playDialog = createPlayDialog(media);
+                    playDialog.setVisible(true);
+                    playDialog.setSize(300,200);
+                    playDialog.pack();
+                }
             });
             container.add(playBtn);
         }

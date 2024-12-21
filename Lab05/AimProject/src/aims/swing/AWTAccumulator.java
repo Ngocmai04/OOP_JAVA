@@ -55,7 +55,6 @@ public class AWTAccumulator extends Frame {
         this.tfInput = tfInput;
         this.tfOutput = tfOutput;
     }
-
     private class TFInputListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent evt) {

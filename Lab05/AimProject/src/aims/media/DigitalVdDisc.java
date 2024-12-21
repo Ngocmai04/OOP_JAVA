@@ -16,6 +16,10 @@ public class DigitalVdDisc extends Media implements Playable {
 
     }
 
+    public DigitalVdDisc(int id, String title, String category, float cost, String director2, int length2) {
+      super(title, category, cost);
+    }
+
     // Getter and Setter methods following Java conventions
     public String getDirector() {
         return director;

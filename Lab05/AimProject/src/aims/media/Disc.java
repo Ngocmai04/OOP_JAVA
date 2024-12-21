@@ -12,6 +12,13 @@ public class Disc extends Media {
         this.director = director;
     }
 
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
     public int getLength() {
         return length;
     }
@@ -20,6 +27,13 @@ public class Disc extends Media {
         return director;
     }
 
+    @Override
+    public void displayDetails() {
+        System.out.print(get_ID() + ". Book - " + get_Title() + " - " + get_Category() + " : ");
+       
+        System.out.println(get_Cost() + "$");
+    }
+   
     
 
 }

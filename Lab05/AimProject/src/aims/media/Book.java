@@ -45,4 +45,14 @@ public class Book extends Media {
     }
 
     
+    @Override
+    public void displayDetails() {
+        System.out.print(get_ID() + ". Book - " + get_Title() + " - " + get_Category() + " : ");
+        for (String author : authors) {
+            System.out.println("Author: " + author);
+        }
+        System.out.println(get_Cost() + "$");
+    }
+
+    
 }
