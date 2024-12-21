@@ -1,6 +1,4 @@
 package src.aims.swing;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,8 +47,6 @@ public class NumberGrid extends JFrame {
         panel.add(btnDelete);
         btnDelete.addActionListener(new ButtonListener(tfDisplay));
     }
-
-    // Inner class ButtonListener to handle button press events
     private static class ButtonListener implements ActionListener {
         private JTextField tfDisplay;
 
